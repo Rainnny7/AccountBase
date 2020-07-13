@@ -13,6 +13,10 @@ import org.bukkit.entity.Player;
 public class SetRankCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (!sender.hasPermission("accountbase.command.setrank")) {
+            sender.sendMessage("§cNo permission.");
+            return true;
+        }
         if (args.length < 2)
             return false;
         Player target = Bukkit.getPlayer(args[0]);

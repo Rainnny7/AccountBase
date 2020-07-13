@@ -2,6 +2,7 @@ package me.rainnny.accountBase.account;
 
 import lombok.Getter;
 import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -24,6 +25,10 @@ public class AccountManager implements Listener {
 
     public AccountManager(JavaPlugin plugin) {
         repository.createTable();
+
+        for (Player online : Bukkit.getOnlinePlayers()) {
+            repository.loadAccount(online.getUniqueId(), Rank.DEFAULT);
+        }
 
         if (!INSTANT_REMOVE) {
             getScheduler().scheduleSyncRepeatingTask(plugin, () -> {
