@@ -1,0 +1,7 @@
+name: AccountBase
+main: me.rainnny.accountBase.AccountBase
+version: 1.0-SNAPSHOT
+commands:
+  setrank:
+    usage: /<command> <player> <rank>
+    aliases: [rank]
